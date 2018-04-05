@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Autolista</title>
 </head>
@@ -9,21 +9,20 @@
 
 <div class=" "></div>
 
-<div class ="col-md-4">
+<div class ="col-md-4"></div>
 <h1>Autot</h1>
-
-</div>
-
-<div class ="col-md-4">
+<table class="table table-striped">
 
 
-</div>
+<div class ="col-md-4"></div>
+
 <h1 th:inline="text">Hei [[${#httpServletRequest.remoteUser}]]!</h1>
 <form th:action="@{/logout}" method="post">
 <input type="submit" value="Kirjaudu ulos"/>
 </form>
 
 <table>
+
 <tr>
 <th>Merkki</th>
 <th>Malli</th>
@@ -40,11 +39,12 @@
 		<td  th:text="${auto.polttoaine.name}"></td> 	
 	<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${auto.id})}" class="btn btn-danger">Poista</a></td>
 	
-	<td><a th:href="@{/editauto/{id}(id=${auto.id})}">Muokka</a></td> 
+	<td><a th:href="@{/editauto/{id}(id=${auto.id})}" class="btn btn-info">Muokka</a></td> 
 	
 </tr>
 </table>
- <a href="/add">Lisää uusi ajoneuvo</a>  
+</table>
+ <a href="/add" class="btn btn-success">Lisää uusi ajoneuvo</a>  
 </body>
 </html>
 
