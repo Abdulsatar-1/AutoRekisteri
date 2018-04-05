@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Autolista</title>
+</head>
+<body>
+
+<div class=" "></div>
+
+<div class ="col-md-4">
+<h1>Autot</h1>
+
+</div>
+
+<div class ="col-md-4">
+
+
+</div>
+<h1 th:inline="text">Hei [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+<input type="submit" value="Kirjaudu ulos"/>
+</form>
+
+<table>
+<tr>
+<th>Merkki</th>
+<th>Malli</th>
+<th>Vuosimalli</th>
+<th>Hinta</th>
+<th>Polttoaine</th>
+<th sec:authorize="hasRole('ADMIN')"></th>
+</tr>
+<tr th:each="auto : ${auto}">
+		<td  th:text="${auto.Merkki}"></td>
+		<td  th:text="${auto.Malli}"></td>
+		<td  th:text="${auto.Vuosimalli}"></td>
+		<td  th:text="${auto.Hinta}"></td>
+		<td  th:text="${auto.polttoaine.name}"></td> 	
+	<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${auto.id})}" class="btn btn-danger">Poista</a></td>
+	
+	<td><a th:href="@{/editauto/{id}(id=${auto.id})}">Muokka</a></td> 
+	
+</tr>
+</table>
+ <a href="/add">Lisää uusi ajoneuvo</a>  
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Muokkaa ajoneuvon tietoja</title>
+</head>
+<body>
+<h2>Muokkaa ajoneuvon tietoja</h2>
+	
+<div>
+<form th:object="${auto}" th:action="@{editauto}" action="#" method="post">
+
+<input type="hidden" id="id" th:field="*{id}"/>
+			
+<label for="Merkki">Merkki</label>
+<input type="text" id="Merkki" th:field="*{Merkki}"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+			
+<label for="Malli">Malli</label>
+<input type="text" id="Malli" th:field="*{Malli}"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+			
+<label for="Vuosimalli">Vuosimalli</label>
+<input type="number" id="Vuosimalli" th:field="*{Vuosimalli}"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+			
+<label for="Hinta">Hinta</label>
+<input type="text" id="Hinta" th:field="*{Hinta}"/>
+<div style="clear: both; display: block; height: 10px;"></div>
+
+<label for ="polttoainelist">Polttoaine</label>	
+<select id="polttoainelist" th:field="*{polttoaine}" class="form-control">
+<option th:each="polttoaine: ${polttoaine}"
+th:value="${polttoaine.polttoaineid}"
+th:text="${polttoaine.name}"></option>
+</select>
+<div style="clear:both;display:block;height:10px"></div>
+
+	
+			
+<input type="submit" value="Tallenna"></input>
+			
+</form>
+</div>
+
+</body>
+</html>

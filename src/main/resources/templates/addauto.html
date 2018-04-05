@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Uusi ajoneuvo</title>
+</head>
+<body>
+<h1>Lisää uusi ajoneuvo</h1>
+<div>
+<form th:object="${auto}" th:action="@{addauto}" action="#" method="post">
+
+<label for="Merkki">Merkki</label>
+<input type="text" id="Merkki" th:field="*{Merkki}" />
+<div style="clear: both; display: block;height:10px;"></div>
+
+<label for="Malli">Malli</label>
+<input type="text" id="Malli" th:field="*{Malli}" />
+<div style="clear: both; display: block;height:10px;"></div>
+
+<label for="Vuosimalli">Vuosimalli</label>
+<input type="text" id="Vuosimalli" th:field="*{Vuosimalli}" />
+<div style="clear: both; display: block;height:10px;"></div>
+
+<label for="Hinta">Hinta</label>
+<input type="text" id="Hinta" th:field="*{Hinta}" />
+<div style="clear: both; display: block;height:10px;"></div>
+
+<label for="polttoainelist">Polttoaine</label>
+<select id="polttoainelist" th:field="*{polttoaine}" class="form-control">
+<option th:each="polttoaine: ${polttoaine}" 
+th:value="${polttoaine.polttoaineid}" 
+th:text="${polttoaine.name}"></option>
+</select>
+<div style="clear: both; display: block; height: 10px;"></div>
+			
+<input type="submit" value="Tallenna"></input>
+</form>
+</div>
+</body>
+</html>
+
